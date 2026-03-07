@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DanceStudioFinance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260307074501_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260307084506_İnitialCreate")]
+    partial class İnitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
