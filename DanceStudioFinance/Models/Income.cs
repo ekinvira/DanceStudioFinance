@@ -2,14 +2,17 @@
 
 namespace DanceStudioFinance.Models
 {
-    public class Expense
+    public class Income
     {
         public int Id { get; set; }
 
         public DateTime Date { get; set; } = DateTime.Today;
 
-        // Kira, Elektrik, Maaş vs.
-        public string Category { get; set; } = "";
+        // K-pop, Serbest Stil vs.
+        public string Branch { get; set; } = "";
+
+        // Yetişkin, Çocuk vs.
+        public string ClassType { get; set; } = "";
 
         public decimal Amount { get; set; }
 
