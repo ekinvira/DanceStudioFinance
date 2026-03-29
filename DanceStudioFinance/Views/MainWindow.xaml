@@ -1,49 +1,331 @@
 ﻿<Window x:Class="DanceStudioFinance.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DanceStudioFinance.Views"
-        mc:Ignorable="d"
-        Title="Dance Studio Finance"
-        Height="450"
-        Width="800"
-        WindowStartupLocation="CenterScreen">
+        Title="VR Finans Uygulamam"
+        Height="760"
+        Width="1080"
+        MinHeight="700"
+        MinWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F6FB">
 
-    <Grid Background="#F5F5F5">
-        <Border Background="White"
-                CornerRadius="12"
-                Padding="30"
-                Margin="40">
-            <StackPanel VerticalAlignment="Center">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-                <TextBlock Text="Dance Studio Finance"
-                           FontSize="28"
-                           FontWeight="Bold"
-                           HorizontalAlignment="Center"
-                           Margin="0,0,0,10"/>
+            <!-- Header -->
+            <Border Grid.Row="0"
+                    Background="White"
+                    CornerRadius="18"
+                    Padding="24"
+                    Margin="0,0,0,20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Gelir - Gider Yönetim Paneli"
-                           FontSize="16"
-                           Foreground="Gray"
-                           HorizontalAlignment="Center"
-                           Margin="0,0,0,30"/>
+                    <StackPanel>
+                        <TextBlock Text="VR Finans Uygulamam"
+                                   FontSize="30"
+                                   FontWeight="Bold"
+                                   Foreground="#1F2937"/>
+                        <TextBlock Text="Gelir, gider ve net kazanç takibi"
+                                   Margin="0,6,0,0"
+                                   FontSize="14"
+                                   Foreground="#6B7280"/>
+                    </StackPanel>
 
-                <Button x:Name="btnIncome" Content="Gelir Ekle"
-                        Height="45"
-                        Margin="0,0,0,15"
-                        FontSize="16" Click="btnIncome_Click"/>
+                    <Border Grid.Column="1"
+                            Background="#EEF2FF"
+                            CornerRadius="14"
+                            Padding="16,10">
+                        <StackPanel>
+                            <TextBlock Text="Genel Bakış"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"
+                                       Foreground="#4F46E5"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="Dashboard"
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       Foreground="#312E81"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
 
-                <Button x:Name="btnExpense" Content="Gider Ekle"
-                        Height="45"
-                        Margin="0,0,0,15"
-                        FontSize="16" Click="btnExpense_Click"/>
+            <!-- Cards -->
+            <Grid Grid.Row="1" Margin="0,0,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-                <Button Content="Raporlar"
-                        Height="45"
-                        FontSize="16"/>
+                <!-- Toplam Gelir -->
+                <Border Grid.Column="0"
+                        Margin="0,0,12,0"
+                        Background="#22C55E"
+                        CornerRadius="20"
+                        Padding="22"
+                        MinHeight="145">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-            </StackPanel>
-        </Border>
-    </Grid>
+                        <Border Width="44"
+                                Height="44"
+                                Background="#33FFFFFF"
+                                CornerRadius="22"
+                                VerticalAlignment="Top">
+                            <TextBlock Text="↗"
+                                       FontSize="22"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"
+                                       Margin="0,3,0,0"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Margin="14,0,0,0">
+                            <TextBlock Text="Toplam Gelir"
+                                       FontSize="14"
+                                       Foreground="White"
+                                       Opacity="0.9"/>
+                            <TextBlock x:Name="txtTotalIncome"
+                                       Text="0 ₺"
+                                       Margin="0,10,0,0"
+                                       FontSize="28"
+                                       FontWeight="Bold"
+                                       Foreground="White"/>
+                            <TextBlock Text="Tüm gelir kayıtlarının toplamı"
+                                       Margin="0,10,0,0"
+                                       FontSize="12"
+                                       Foreground="White"
+                                       Opacity="0.85"
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Toplam Gider -->
+                <Border Grid.Column="1"
+                        Margin="6,0"
+                        Background="#EF4444"
+                        CornerRadius="20"
+                        Padding="22"
+                        MinHeight="145">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="44"
+                                Height="44"
+                                Background="#33FFFFFF"
+                                CornerRadius="22"
+                                VerticalAlignment="Top">
+                            <TextBlock Text="↘"
+                                       FontSize="22"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"
+                                       Margin="0,3,0,0"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Margin="14,0,0,0">
+                            <TextBlock Text="Toplam Gider"
+                                       FontSize="14"
+                                       Foreground="White"
+                                       Opacity="0.9"/>
+                            <TextBlock x:Name="txtTotalExpense"
+                                       Text="0 ₺"
+                                       Margin="0,10,0,0"
+                                       FontSize="28"
+                                       FontWeight="Bold"
+                                       Foreground="White"/>
+                            <TextBlock Text="Tüm gider kayıtlarının toplamı"
+                                       Margin="0,10,0,0"
+                                       FontSize="12"
+                                       Foreground="White"
+                                       Opacity="0.85"
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Net Kazanç -->
+                <Border x:Name="borderNetCard"
+                        Grid.Column="2"
+                        Margin="12,0,0,0"
+                        Background="#3B82F6"
+                        CornerRadius="20"
+                        Padding="22"
+                        MinHeight="145">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="44"
+                                Height="44"
+                                Background="#33FFFFFF"
+                                CornerRadius="22"
+                                VerticalAlignment="Top">
+                            <TextBlock x:Name="txtNetIcon"
+                                       Text="↑"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Margin="14,0,0,0">
+                            <TextBlock Text="Net Kazanç"
+                                       FontSize="14"
+                                       Foreground="White"
+                                       Opacity="0.9"/>
+                            <TextBlock x:Name="txtNet"
+                                       Text="0 ₺"
+                                       Margin="0,10,0,0"
+                                       FontSize="28"
+                                       FontWeight="Bold"
+                                       Foreground="White"/>
+                            <TextBlock Text="Gelir - gider farkı"
+                                       Margin="0,10,0,0"
+                                       FontSize="12"
+                                       Foreground="White"
+                                       Opacity="0.85"
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Hızlı İşlemler -->
+            <Border Grid.Row="2"
+                    Background="White"
+                    CornerRadius="18"
+                    Padding="24"
+                    Margin="0,0,0,20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Hızlı İşlemler"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               Foreground="#1F2937"/>
+
+                    <TextBlock Grid.Row="1"
+                               Text="Yeni gelir veya gider kaydı eklemek için aşağıdaki butonları kullan."
+                               Margin="0,6,0,24"
+                               FontSize="13"
+                               Foreground="#6B7280"
+                               TextWrapping="Wrap"/>
+
+                    <UniformGrid Grid.Row="2"
+                                 Columns="2"
+                                 HorizontalAlignment="Center">
+                        <Button Content="Gelir Ekle"
+                                Width="220"
+                                Height="56"
+                                Margin="10"
+                                Click="btnIncome_Click"
+                                FontSize="16"
+                                FontWeight="SemiBold"
+                                Background="#16A34A"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"/>
+
+                        <Button Content="Gider Ekle"
+                                Width="220"
+                                Height="56"
+                                Margin="10"
+                                Click="btnExpense_Click"
+                                FontSize="16"
+                                FontWeight="SemiBold"
+                                Background="#DC2626"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"/>
+                    </UniformGrid>
+                </Grid>
+            </Border>
+
+            <!-- Son Eklenen Kayıtlar -->
+            <Border Grid.Row="3"
+                    Background="White"
+                    CornerRadius="18"
+                    Padding="24">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Son Eklenen Kayıtlar"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               Foreground="#1F2937"/>
+
+                    <TextBlock Grid.Row="1"
+                               Text="Son girilen gelir ve gider kayıtları aşağıda listelenir."
+                               Margin="0,6,0,18"
+                               FontSize="13"
+                               Foreground="#6B7280"/>
+
+                    <DataGrid x:Name="dgRecentRecords"
+                              Grid.Row="2"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"
+                              HeadersVisibility="Column"
+                              GridLinesVisibility="Horizontal"
+                              RowBackground="White"
+                              AlternatingRowBackground="#F8FAFC"
+                              BorderThickness="0"
+                              MinHeight="260"
+                              MaxHeight="320"
+                              RowHeight="38"
+                              ColumnHeaderHeight="40">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tür" Binding="{Binding Type}" Width="100"/>
+                            <DataGridTextColumn Header="Kategori / Branş" Binding="{Binding CategoryOrBranch}" Width="190"/>
+                            <DataGridTextColumn Header="Sınıf Türü" Binding="{Binding ClassType}" Width="150"/>
+                            <DataGridTextColumn Header="Tutar" Binding="{Binding Amount}" Width="120"/>
+                            <DataGridTextColumn Header="Tarih" Binding="{Binding Date}" Width="120"/>
+                            <DataGridTextColumn Header="Not" Binding="{Binding Note}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
 </Window>
